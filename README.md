@@ -3,4 +3,7 @@ Android Jetpack Compose project based on my personal project Learning Cards. Don
 # Features
 - [ ] Room Database
 - [ ] Login/Register
+- [ ] MaterialDesign
+- [ ] UnsplashAPI
+- [x] RemeberState of App
 # Screenshots
