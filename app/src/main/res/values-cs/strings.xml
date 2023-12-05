@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    //Translated strings
+    <string name="app_name">Studijní karty</string>
+    <!-- Welcome -->
+    <string name="login">Přihlásit</string>
+    <string name="register">Registrace</string>
+    <!-- Onboarding -->
+    <string name="choose_topics_that_interest_you">Vyberte si téma které vás zajímá</string>
+    <string name="label_continue_to_courses">Pokračovat do kurzu</string>
+    <string name="label_profile">Profil</string>
+    <string name="label_settings">Nastavení</string>
+
+    <!-- Courses -->
+    <string name="my_courses">Moje Kurzy</string>
+    <string name="featured">Doporučené</string>
+    <string name="search">Hledat</string>
+    <string name="course_step_steps">%1$d / %2$d</string>
+    <string name="label_expand_lessons">Rozbalit nabídku lekcí</string>
+    <string name="label_collapse_lessons">Zavřít nabídku lekcí</string>
+</resources>
