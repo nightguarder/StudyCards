@@ -39,6 +39,7 @@
 - [] **User Profiles:** Access user profile with additional details.
 - [] **Logout:** Add Logout User functionality to the Top App Bar.
 - [] **Community Features:** Interact with other students through comments and discussions.
+- [] **Secret Protection:** Using GitGuardion implement a protection to keep secret credentions from leaking.
 
 # References
 
@@ -51,6 +52,7 @@
 
 - [Firebase](https://firebase.google.com/docs/auth/android/start)
 - [Unsplash](https://unsplash.com/documentation)
+- [GitGuardian](https://www.gitguardian.com)
   
 # License
 
