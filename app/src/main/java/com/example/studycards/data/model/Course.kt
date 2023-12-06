@@ -19,7 +19,6 @@ data class Course(
 //Fake Repository for Courses
 object CourseRepo {
     fun getCourse(courseId: Long): Course = courses.find { it.id == courseId }!!
-    fun getRelated(@Suppress("UNUSED_PARAMETER") courseId: Long): List<Course> = courses
 }
 
 //Study courses *Ad more later*
@@ -27,8 +26,8 @@ object CourseRepo {
 val courses = listOf(
     Course(
         id = 0,
-        name = "Architektura Počítačů",
-        subject = "ARP",
+        name = "ARP",
+        subject = "Architektura Počítačů",
         thumbUrl = "https://images.unsplash.com/photo-1518770660439-4636190af475?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1Mzc3NDF8MHwxfGFsbHx8fHx8fHx8fDE3MDE4OTQ1OTl8&ixlib=rb-4.0.3&q=80&w=1080",
         thumbContentDesc = "",
         steps = 7,
