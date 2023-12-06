@@ -45,7 +45,7 @@
 ### Assets
 
 - The Vector images are not from me. @author: [abdulazizahwan](https://github.com/abdulazizahwan/MyLearningApp.git)
-- Code that was obtained from external repository or documentation is marked as *//NENI MOJE TVORBA*
+- Code that was obtained from external repository or documentation is marked as ``//NENI MOJE TVORBA``
 
 ### Documentation
 
