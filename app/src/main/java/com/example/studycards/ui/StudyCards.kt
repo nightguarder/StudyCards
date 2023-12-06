@@ -13,7 +13,6 @@ import androidx.compose.material.LocalContentColor
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
-import androidx.compose.material.primarySurface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
@@ -35,7 +34,7 @@ fun StudyCards(finishActivity: () -> Unit) {
         val tabs = remember { CourseTabs.values() }
         val navController = rememberNavController()
         Scaffold(
-            backgroundColor = MaterialTheme.colors.primarySurface,
+            backgroundColor = MaterialTheme.colors.background,
             bottomBar = { MainBottomBar(navController = navController, tabs) }
         ) { innerPaddingModifier ->
             NavGraph(

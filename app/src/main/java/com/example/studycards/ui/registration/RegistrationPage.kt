@@ -52,6 +52,7 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.studycards.R
 import com.example.studycards.data.register.RegisterUIEvent
+import com.example.studycards.ui.theme.yellowDarkPrimary
 import com.example.studycards.viewmodels.RegistrationViewModel
 
 @Composable
@@ -148,7 +149,7 @@ fun ClickableLoginText(tryingToLogin: Boolean = true, onTextSelected: (String) -
 
     val annotatedString = buildAnnotatedString {
         append(initialText)
-        withStyle(style = SpanStyle(color = Color.Yellow)) {
+        withStyle(style = SpanStyle(color = yellowDarkPrimary)) {
             pushStringAnnotation(tag = loginText, annotation = loginText)
             append(loginText)
         }
