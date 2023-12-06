@@ -3,9 +3,9 @@
 - App Helps you to learn more efficiently by having quick access to all courses.
 
 # Features
-- [ ] Login/Register
-- [ ] MaterialDesign
-- [ ] UnsplashAPI
+- [x] Login/Register using Firebase
+- [x] MaterialDesign *DarkMode not ready*
+- [x] UnsplashAPI
 - [x] RemeberState of App
 # Features
 
