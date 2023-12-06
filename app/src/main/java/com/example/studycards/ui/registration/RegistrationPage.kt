@@ -1,5 +1,6 @@
 package com.example.studycards.ui.registration
 
+import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -7,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.text.ClickableText
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.Button
@@ -30,14 +32,23 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.studycards.R
 import com.example.studycards.data.register.RegisterUIEvent
@@ -57,10 +68,13 @@ fun Registration(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(16.dp),
+            .padding(12.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
+        NormalText(value = stringResource(id = R.string.register))
+        //Some Space
+        Spacer(modifier = Modifier.height(20.dp))
         EmailTextField(
             labelValue = stringResource(id = R.string.email),
             painterResource = painterResource(id = R.drawable.email),
@@ -118,10 +132,69 @@ fun Registration(
                 color = MaterialTheme.colors.error
             )
         }
+        ClickableLoginText(tryingToLogin = true, onTextSelected = {
+            onRegistrationComplete()
+        })
     }
 }
 
+
 //Custom Composable for the Password Check and Email Input Fields
+@Composable
+fun ClickableLoginText(tryingToLogin: Boolean = true, onTextSelected: (String) -> Unit) {
+    val initialText =
+        if (tryingToLogin) "Already have an account? " else "Don’t have an account yet? "
+    val loginText = if (tryingToLogin) " Login" else " Register"
+
+    val annotatedString = buildAnnotatedString {
+        append(initialText)
+        withStyle(style = SpanStyle(color = Color.Yellow)) {
+            pushStringAnnotation(tag = loginText, annotation = loginText)
+            append(loginText)
+        }
+    }
+
+    ClickableText(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 5.dp),
+        style = TextStyle(
+            fontSize = 18.sp,
+            fontWeight = FontWeight.Normal,
+            fontStyle = FontStyle.Normal,
+            textAlign = TextAlign.Center
+        ),
+        text = annotatedString,
+        onClick = { offset ->
+
+            annotatedString.getStringAnnotations(offset, offset)
+                .firstOrNull()?.also { span ->
+                    Log.d("ClickableTextComponent", "{${span.item}}")
+
+                    if (span.item == loginText) {
+                        onTextSelected(span.item)
+                    }
+                }
+
+        },
+    )
+}
+
+@Composable
+fun NormalText(value: String) {
+    Text(
+        text = value,
+        modifier = Modifier
+            .fillMaxWidth(),
+        style = TextStyle(
+            fontSize = 33.sp,
+            fontWeight = FontWeight.Bold,
+            fontStyle = FontStyle.Normal
+        ), color = colorResource(id = R.color.colorText),
+        textAlign = TextAlign.Center
+    )
+}
+
 @Composable
 fun EmailTextField(
     labelValue: String, painterResource: Painter,
@@ -132,7 +205,6 @@ fun EmailTextField(
     val textValue = remember {
         mutableStateOf("")
     }
-    val localFocusManager = LocalFocusManager.current
 
     OutlinedTextField(
         modifier = Modifier

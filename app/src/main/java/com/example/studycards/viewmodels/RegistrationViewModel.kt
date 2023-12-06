@@ -58,7 +58,7 @@ class RegistrationViewModel : ViewModel() {
 
 
     private fun register() {
-        Log.d(TAG, "Inside_register")
+        Log.d(TAG, "Inside_register()")
         printState()
         createUserInFirebase(
             email = registrationUIState.value.email,
@@ -81,8 +81,7 @@ class RegistrationViewModel : ViewModel() {
         )
 
 
-        Log.d(TAG, "Inside_validateDataWithRules")
-        Log.d(TAG, "userNameResult= $fNameResult")
+        Log.d(TAG, "Inside_validateDataWithRules()")
         Log.d(TAG, "emailResult= $emailResult")
         Log.d(TAG, "passwordResult= $passwordResult")
 
@@ -117,7 +116,7 @@ class RegistrationViewModel : ViewModel() {
 
                 registerInProgress.value = false
                 if (it.isSuccessful) {
-                    //TODO: Navigate to LOGIN Sreen
+                    //DONE: Navigate to LOGIN Screen
                     //ScreenNavigator.navigateTo(Screen.registerScreen)
                     Log.d(TAG, "Registration process completed successfully")
                     return@addOnCompleteListener

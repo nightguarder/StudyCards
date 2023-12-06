@@ -17,6 +17,7 @@ import com.example.studycards.ui.courses.courses
 import com.example.studycards.ui.login.Login
 import com.example.studycards.ui.registration.Registration
 import com.example.studycards.ui.welcome.Welcome
+import com.google.firebase.auth.FirebaseAuth
 
 object MainDestinations {
     const val WELCOME_ROUTE = "welcome"
@@ -26,6 +27,8 @@ object MainDestinations {
     const val COURSE_DETAIL_ROUTE = "course"
     const val COURSE_DETAIL_ID_KEY = "courseId"
 }
+
+private lateinit var auth: FirebaseAuth
 
 @Composable
 fun NavGraph(
@@ -44,12 +47,16 @@ fun NavGraph(
         mutableStateOf(!showWelcomeInitially)
     }
 
+
     val actions = remember(navController) { MainActions(navController) }
 
     NavHost(
         navController = navController,
         startDestination = startDestination
     ) {
+        composable(MainDestinations.LOGIN_ROUTE) {
+            //Check if user is logged in or not
+        }
         //The app navigates using composable
         composable(MainDestinations.WELCOME_ROUTE) {
             // Intercept back in welcome: make it finish the activity
@@ -67,7 +74,7 @@ fun NavGraph(
 
         }
         composable(route = "registration") {
-            // TODO: Registration Page
+            // DONE: Registration Page
             Registration(
                 onRegistrationComplete = {
                     // Navigate to Login after successful registration
@@ -84,6 +91,10 @@ fun NavGraph(
                 onLoginComplete = {
                     // Navigate to Courses after successful login
                     navController.navigate(MainDestinations.COURSES_ROUTE)
+                },
+                onWelcomeComplete = {
+                    //Navigate back to Register page
+                    navController.navigate(MainDestinations.REGISTER_ROUTE)
                 }
             )
 
@@ -107,6 +118,7 @@ fun NavGraph(
  * Models the navigation actions in the app and remembers the state.
  */
 class MainActions(navController: NavHostController) {
+    //First Start
     val welcomeComplete: () -> Unit = {
         navController.navigate("${MainDestinations.REGISTER_ROUTE}")
         //pop Back Stack goes to home screen
@@ -131,7 +143,9 @@ class MainActions(navController: NavHostController) {
 
     //Navigate after successful registration
     val navigateToLogin: () -> Unit = {
-        navController.navigate("login")
+        navController.navigate("${MainDestinations.LOGIN_ROUTE}")
+    }
+    val navigateToCourses: () -> Unit = {
     }
 
     // Used from COURSE_DETAIL_ROUTE
