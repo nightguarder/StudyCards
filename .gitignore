@@ -13,3 +13,5 @@
 .externalNativeBuild
 .cxx
 local.properties
+/app/study-cards-project-firebase-adminsdk.json
+/app/google-services.json

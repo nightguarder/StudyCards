@@ -38,18 +38,18 @@ private object CoursesDestinations {
 //TODO: Redo Courses to Classes and use ROOM
 fun NavGraphBuilder.courses(
     onCourseSelected: (Long, NavBackStackEntry) -> Unit,
-    onboardingComplete: State<Boolean>, // https://issuetracker.google.com/174783110
+    welcomeComplete: State<Boolean>, // https://issuetracker.google.com/174783110
     navController: NavHostController,
     modifier: Modifier = Modifier
 ) {
     composable(CourseTabs.FEATURED.route) { from ->
         // Show Welcome instead if not shown yet.
-        LaunchedEffect(onboardingComplete) {
-            if (!onboardingComplete.value) {
+        LaunchedEffect(welcomeComplete) {
+            if (!welcomeComplete.value) {
                 navController.navigate(MainDestinations.WELCOME_ROUTE)
             }
         }
-        if (onboardingComplete.value) {
+        if (welcomeComplete.value) {
             FeaturedCourses(
             )
         }

@@ -29,11 +29,11 @@ fun NavGraph(
     finishActivity: () -> Unit = {},
     navController: NavHostController = rememberNavController(),
     startDestination: String = MainDestinations.COURSES_ROUTE,
-    showOnboardingInitially: Boolean = true
+    showWelcomeInitially: Boolean = true
 ) {
-    // Onboarding could be read from shared preferences.
-    val onboardingComplete = remember(showOnboardingInitially) {
-        mutableStateOf(!showOnboardingInitially)
+    // welcome could be read from shared preferences.
+    val welcomeComplete = remember(showWelcomeInitially) {
+        mutableStateOf(!showWelcomeInitially)
     }
 
     val actions = remember(navController) { MainActions(navController) }
@@ -43,16 +43,16 @@ fun NavGraph(
         startDestination = startDestination
     ) {
         composable(MainDestinations.WELCOME_ROUTE) {
-            // Intercept back in Onboarding: make it finish the activity
+            // Intercept back in welcome: make it finish the activity
             BackHandler {
                 finishActivity()
             }
             //TODO: WELCOME page
             Welcome(
                 welcomeComplete = {
-                    // Set the flag so that onboarding is not shown next time.
-                    onboardingComplete.value = true
-                    actions.onboardingComplete()
+                    // Set the flag so that welcome is not shown next time.
+                    welcomeComplete.value = true
+                    actions.welcomeComplete()
                 }
             )
         }
@@ -62,7 +62,7 @@ fun NavGraph(
         ) {
             courses(
                 onCourseSelected = actions.openCourse,
-                onboardingComplete = onboardingComplete,
+                welcomeComplete = welcomeComplete,
                 navController = navController,
                 modifier = modifier
             )
@@ -77,7 +77,7 @@ fun NavGraph(
  * Models the navigation actions in the app and remembers the state.
  */
 class MainActions(navController: NavHostController) {
-    val onboardingComplete: () -> Unit = {
+    val welcomeComplete: () -> Unit = {
         navController.popBackStack()
     }
 
