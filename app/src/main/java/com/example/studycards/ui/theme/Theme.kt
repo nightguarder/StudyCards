@@ -2,9 +2,9 @@ package com.example.studycards.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.Colors
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
@@ -42,8 +42,8 @@ fun StudyCardsTheme(
      */
 
     MaterialTheme(
-        colorScheme = lightColorScheme(),
-        typography = Typography,
+        colors = colors,
+        typography = typography,
         content = content
     )
 }
@@ -127,3 +127,25 @@ fun BlueTheme(
     StudyCardsTheme(darkTheme, colors, content)
 }
 
+//Customize the Material Theme to suit the app
+//NENI MOJE TVORBA
+object StudyTheme {
+
+    /**
+     * Proxy to [MaterialTheme]
+     */
+    val colors: Colors
+        @Composable
+        get() = androidx.compose.material.MaterialTheme.colors
+
+    val elevations: Elevations
+        @Composable
+        get() = LocalElevations.current
+
+    /**
+     * Retrieves the current [Images] at the call site's position in the hierarchy.
+     */
+    val images: Images
+        @Composable
+        get() = LocalImages.current
+}

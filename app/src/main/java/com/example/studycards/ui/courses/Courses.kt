@@ -23,6 +23,8 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import com.example.studycards.R
+import com.example.studycards.data.model.courses
+import com.example.studycards.data.model.topics
 import com.example.studycards.ui.nav.MainDestinations
 
 
@@ -35,7 +37,7 @@ private object CoursesDestinations {
     const val SEARCH_COURSES_ROUTE = "courses/search"
 }
 
-//TODO: Redo Courses to Classes and use ROOM
+//TODO: Add Logout Icon to header or bottom
 fun NavGraphBuilder.courses(
     onCourseSelected: (Long, NavBackStackEntry) -> Unit,
     welcomeComplete: State<Boolean>, // https://issuetracker.google.com/174783110
@@ -51,18 +53,28 @@ fun NavGraphBuilder.courses(
         }
         if (welcomeComplete.value) {
             FeaturedCourses(
+                courses = courses,
+                selectCourse = { id -> onCourseSelected(id, from) },
+                modifier = modifier
             )
         }
     }
+    //My courses screen
     composable(CourseTabs.MY_COURSES.route) { from ->
         MyCourses(
+            courses = courses,
+            { id -> onCourseSelected(id, from) },
+            modifier
         )
     }
+    //Search View Screen
     composable(CourseTabs.SEARCH.route) {
-        SearchCourses()
+        SearchCourses(topics, modifier)
     }
 }
 
+//App bar on top for search
+//TODO: add Logout button
 @Composable
 fun CoursesAppBar() {
     TopAppBar(

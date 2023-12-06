@@ -86,7 +86,7 @@ fun NavGraph(
         }
 
         composable(route = "login") {
-            // TODO: Login Page
+            // DONE: Login Page
             Login(
                 onLoginComplete = {
                     // Navigate to Courses after successful login
@@ -127,15 +127,7 @@ class MainActions(navController: NavHostController) {
 
     // Used from COURSES_ROUTE
     val openCourse = { newCourseId: Long, from: NavBackStackEntry ->
-        // In order to discard duplicated navigation events, we check the Lifecycle
-        if (from.lifecycleIsResumed()) {
-            navController.navigate("${MainDestinations.COURSE_DETAIL_ROUTE}/$newCourseId")
-        }
-    }
-
-    // Used from COURSE_DETAIL_ROUTE
-    val relatedCourse = { newCourseId: Long, from: NavBackStackEntry ->
-        // In order to discard duplicated navigation events, we check the Lifecycle
+        // check the Lifecycle and go to CoursePreview
         if (from.lifecycleIsResumed()) {
             navController.navigate("${MainDestinations.COURSE_DETAIL_ROUTE}/$newCourseId")
         }
@@ -147,18 +139,12 @@ class MainActions(navController: NavHostController) {
     }
     val navigateToCourses: () -> Unit = {
     }
+    //TODO: Course Detail Navigation Back
 
-    // Used from COURSE_DETAIL_ROUTE
-    val upPress: (from: NavBackStackEntry) -> Unit = { from ->
-        // In order to discard duplicated navigation events, we check the Lifecycle
-        if (from.lifecycleIsResumed()) {
-            navController.navigateUp()
-        }
-    }
-}
 
 /**
  * If the lifecycle is not resumed it means this NavBackStackEntry already processed a nav event.
  */
 private fun NavBackStackEntry.lifecycleIsResumed() =
     this.lifecycle.currentState == Lifecycle.State.RESUMED
+}

@@ -14,9 +14,10 @@
     <string name="username">Name</string>
     <string name="hide_password">Show text</string>
     <string name="show_password">Hide text</string>
-    <!-- Onboarding -->
+    <!-- Others -->
     <string name="choose_topics_that_interest_you">Choose topics that interest you</string>
     <string name="label_continue_to_courses">Continue to courses</string>
+    <string name="label_continue_to_login">Continue to courses</string>
     <string name="label_profile">Profile</string>
     <string name="label_settings">Settings</string>
 
@@ -27,4 +28,7 @@
     <string name="course_step_steps">%1$d / %2$d</string>
     <string name="label_expand_lessons">Expand lessons sheet</string>
     <string name="label_collapse_lessons">Collapse lessons sheet</string>
+
+    //Description
+    <string name="course_desc">This course focuses on..</string>
 </resources>

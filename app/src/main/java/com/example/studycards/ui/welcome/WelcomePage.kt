@@ -45,7 +45,7 @@ fun Welcome(welcomeComplete: () -> Unit) {
                 ) {
                     Icon(
                         imageVector = Icons.Rounded.NavigateNext,
-                        contentDescription = stringResource(R.string.label_continue_to_courses)
+                        contentDescription = stringResource(R.string.label_continue_to_login)
                     )
                 }
             }
@@ -109,6 +109,6 @@ fun Welcome(welcomeComplete: () -> Unit) {
 
 @Preview(name = "Welcome")
 @Composable
-private fun OnboardingPreview() {
+private fun WelcomePreview() {
     Welcome(welcomeComplete = { })
 }

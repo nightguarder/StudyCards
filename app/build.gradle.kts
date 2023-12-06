@@ -64,6 +64,7 @@ dependencies {
     implementation("androidx.navigation:navigation-compose:2.7.5")
     implementation(platform("androidx.compose:compose-bom:2023.03.00"))
     //Compose libraries
+    implementation("androidx.constraintlayout:constraintlayout-compose:1.0.1")
     implementation("androidx.compose.runtime:runtime-android:1.5.4")
     implementation("androidx.compose.foundation:foundation:1.5.4")
     implementation("androidx.compose.foundation:foundation-layout:1.5.4")

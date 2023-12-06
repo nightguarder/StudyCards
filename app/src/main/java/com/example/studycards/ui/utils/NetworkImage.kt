@@ -1,9 +1,7 @@
 package com.example.studycards.ui.utils
 
-import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import coil.compose.AsyncImage
@@ -11,9 +9,9 @@ import coil.intercept.Interceptor
 import coil.request.ImageResult
 import coil.size.pxOrElse
 import com.example.studycards.R
-import com.example.studycards.ui.theme.compositedOnSurface
 import okhttp3.HttpUrl.Companion.toHttpUrl
 
+//NENI MOJE TVORBA
 /**
  * A wrapper around [AsyncImage], setting a default [contentScale] and showing
  * content while loading.
@@ -24,8 +22,8 @@ fun NetworkImage(
     contentDescription: String?,
     modifier: Modifier = Modifier,
     contentScale: ContentScale = ContentScale.Crop,
-    placeholderColor: Color = MaterialTheme.colors.compositedOnSurface(0.2f)
 ) {
+    //Show this image when the content is not loaded
     AsyncImage(
         model = url,
         contentDescription = contentDescription,

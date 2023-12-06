@@ -34,6 +34,7 @@ fun StudyCards(finishActivity: () -> Unit) {
         val tabs = remember { CourseTabs.values() }
         val navController = rememberNavController()
         Scaffold(
+            //Watchout for the background! This is set to white
             backgroundColor = MaterialTheme.colors.background,
             bottomBar = { MainBottomBar(navController = navController, tabs) }
         ) { innerPaddingModifier ->

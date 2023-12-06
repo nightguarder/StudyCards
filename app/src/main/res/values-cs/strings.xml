@@ -17,6 +17,7 @@
     <!-- Onboarding -->
     <string name="choose_topics_that_interest_you">Vyberte si téma které vás zajímá</string>
     <string name="label_continue_to_courses">Pokračovat do kurzu</string>
+    <string name="label_continue_to_login">Pokračovast na přihlášení</string>
     <string name="label_profile">Profil</string>
     <string name="label_settings">Nastavení</string>
 
@@ -27,4 +28,6 @@
     <string name="course_step_steps">%1$d / %2$d</string>
     <string name="label_expand_lessons">Rozbalit nabídku lekcí</string>
     <string name="label_collapse_lessons">Zavřít nabídku lekcí</string>
+    //Description
+    <string name="course_desc">Tento kurz se převážně věnuje...</string>
 </resources>

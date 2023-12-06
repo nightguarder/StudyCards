@@ -1,6 +1,6 @@
 package com.example.studycards.ui.theme
 
-import androidx.compose.material3.Typography
+import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -22,22 +22,23 @@ val firaSansFamily = FontFamily(
     )
 
 // Set of Material typography styles to start with
-val Typography = Typography(
-    bodyLarge = TextStyle(
+//This Override the defaults
+val typography = Typography(
+    h1 = TextStyle(
         fontFamily = FontFamily.Default,
         fontWeight = FontWeight.Normal,
-        fontSize = 22.sp,
-        lineHeight = 22.sp,
+        fontSize = 55.sp,
+        lineHeight = 45.sp,
         letterSpacing = 0.5.sp
     ),
-    displayLarge = TextStyle(
+    h2 = TextStyle(
         fontFamily = FontFamily.Default,
         fontWeight = FontWeight.Bold,
         fontSize = 50.sp,
-        lineHeight = 55.sp,
+        lineHeight = 45.sp,
         letterSpacing = 0.5.sp
     ),
-    bodyMedium = TextStyle(
+    body1 = TextStyle(
         fontFamily = FontFamily.Default,
         fontWeight = FontWeight.Normal,
         fontSize = 18.sp,
@@ -45,14 +46,14 @@ val Typography = Typography(
         letterSpacing = 0.5.sp
     ),
 
-    titleLarge = TextStyle(
+    subtitle1 = TextStyle(
         fontFamily = FontFamily.Default,
         fontWeight = FontWeight.Normal,
         fontSize = 30.sp,
         lineHeight = 28.sp,
         letterSpacing = 0.sp
     ),
-    labelSmall = TextStyle(
+    caption = TextStyle(
         fontFamily = FontFamily.Default,
         fontWeight = FontWeight.Medium,
         fontSize = 15.sp,
