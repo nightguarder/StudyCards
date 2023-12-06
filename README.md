@@ -9,7 +9,7 @@
 - [x] RemeberState of App
 # Features
 
-- [x]**Multi-language Support:** Explore learning cards in multiple **languages** (CZ,ENG).
+- [x] **Multi-language Support:** Explore learning cards in multiple **languages** (CZ,ENG).
 - [x] **Interactive UI:** Navigation is implemented with **composable** and NavHostController.
 - [ ] **MaterialDesign** The app mostly uses MaterialTheme for Icons and colors. *Dark mode not yet done*
 - [x] **User Authentication:** Securely log in and Registration with **FIREBASE**.
