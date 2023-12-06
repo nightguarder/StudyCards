@@ -23,7 +23,7 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import com.example.studycards.R
-import com.example.studycards.ui.MainDestinations
+import com.example.studycards.ui.nav.MainDestinations
 
 
 /**

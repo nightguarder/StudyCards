@@ -25,17 +25,18 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.studycards.ui.courses.CourseTabs
-import com.example.studycards.ui.theme.BlueTheme
+import com.example.studycards.ui.nav.NavGraph
+import com.example.studycards.ui.theme.YellowTheme
 import java.util.Locale
 
 @Composable
 fun StudyCards(finishActivity: () -> Unit) {
-    BlueTheme {
+    YellowTheme {
         val tabs = remember { CourseTabs.values() }
         val navController = rememberNavController()
         Scaffold(
             backgroundColor = MaterialTheme.colors.primarySurface,
-            bottomBar = { OwlBottomBar(navController = navController, tabs) }
+            bottomBar = { MainBottomBar(navController = navController, tabs) }
         ) { innerPaddingModifier ->
             NavGraph(
                 finishActivity = finishActivity,
@@ -47,7 +48,7 @@ fun StudyCards(finishActivity: () -> Unit) {
 }
 
 @Composable
-fun OwlBottomBar(navController: NavController, tabs: Array<CourseTabs>) {
+fun MainBottomBar(navController: NavController, tabs: Array<CourseTabs>) {
 
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route

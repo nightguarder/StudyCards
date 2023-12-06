@@ -7,6 +7,13 @@
     <string name="welcome">Welcome Stranger!</string>
     <string name="start">START NOW!</string>
     <string name="study">Learn easier with Study Cards app</string>
+
+    //Register
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="username">Name</string>
+    <string name="hide_password">Show text</string>
+    <string name="show_password">Hide text</string>
     <!-- Onboarding -->
     <string name="choose_topics_that_interest_you">Choose topics that interest you</string>
     <string name="label_continue_to_courses">Continue to courses</string>

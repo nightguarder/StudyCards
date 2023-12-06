@@ -1,4 +1,4 @@
-package com.example.studycards.ui
+package com.example.studycards.ui.nav
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.runtime.Composable
@@ -14,10 +14,14 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navigation
 import com.example.studycards.ui.courses.CourseTabs
 import com.example.studycards.ui.courses.courses
+import com.example.studycards.ui.login.Login
+import com.example.studycards.ui.registration.Registration
 import com.example.studycards.ui.welcome.Welcome
 
 object MainDestinations {
     const val WELCOME_ROUTE = "welcome"
+    const val REGISTER_ROUTE = "registration"
+    const val LOGIN_ROUTE = "login"
     const val COURSES_ROUTE = "courses"
     const val COURSE_DETAIL_ROUTE = "course"
     const val COURSE_DETAIL_ID_KEY = "courseId"
@@ -28,11 +32,15 @@ fun NavGraph(
     modifier: Modifier = Modifier,
     finishActivity: () -> Unit = {},
     navController: NavHostController = rememberNavController(),
-    startDestination: String = MainDestinations.COURSES_ROUTE,
+    startDestination: String = MainDestinations.WELCOME_ROUTE,
     showWelcomeInitially: Boolean = true
 ) {
     // welcome could be read from shared preferences.
     val welcomeComplete = remember(showWelcomeInitially) {
+        mutableStateOf(!showWelcomeInitially)
+    }
+    //Don't show welcome after Registry and go to Login
+    val registerComplete = remember(showWelcomeInitially) {
         mutableStateOf(!showWelcomeInitially)
     }
 
@@ -42,12 +50,13 @@ fun NavGraph(
         navController = navController,
         startDestination = startDestination
     ) {
+        //The app navigates using composable
         composable(MainDestinations.WELCOME_ROUTE) {
             // Intercept back in welcome: make it finish the activity
             BackHandler {
                 finishActivity()
             }
-            //TODO: WELCOME page
+            //DONEß WELCOME page
             Welcome(
                 welcomeComplete = {
                     // Set the flag so that welcome is not shown next time.
@@ -55,6 +64,29 @@ fun NavGraph(
                     actions.welcomeComplete()
                 }
             )
+
+        }
+        composable(route = "registration") {
+            // TODO: Registration Page
+            Registration(
+                onRegistrationComplete = {
+                    // Navigate to Login after successful registration
+                    //And set flag so welcome is not shown next time.
+                    registerComplete.value = true
+                    actions.navigateToLogin()
+                }
+            )
+        }
+
+        composable(route = "login") {
+            // TODO: Login Page
+            Login(
+                onLoginComplete = {
+                    // Navigate to Courses after successful login
+                    navController.navigate(MainDestinations.COURSES_ROUTE)
+                }
+            )
+
         }
         navigation(
             route = MainDestinations.COURSES_ROUTE,
@@ -67,8 +99,6 @@ fun NavGraph(
                 modifier = modifier
             )
         }
-        //TODO: Routing by composable
-
     }
 }
 
@@ -78,7 +108,9 @@ fun NavGraph(
  */
 class MainActions(navController: NavHostController) {
     val welcomeComplete: () -> Unit = {
-        navController.popBackStack()
+        navController.navigate("${MainDestinations.REGISTER_ROUTE}")
+        //pop Back Stack goes to home screen
+        //navController.popBackStack()
     }
 
     // Used from COURSES_ROUTE
@@ -95,6 +127,11 @@ class MainActions(navController: NavHostController) {
         if (from.lifecycleIsResumed()) {
             navController.navigate("${MainDestinations.COURSE_DETAIL_ROUTE}/$newCourseId")
         }
+    }
+
+    //Navigate after successful registration
+    val navigateToLogin: () -> Unit = {
+        navController.navigate("login")
     }
 
     // Used from COURSE_DETAIL_ROUTE

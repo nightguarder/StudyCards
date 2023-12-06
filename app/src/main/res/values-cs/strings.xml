@@ -8,6 +8,12 @@
     <string name="welcome">Vítej uživateli!</string>
     <string name="start">Začít hned!</string>
     <string name="study">Začni se učit se studijními kartami.</string>
+    //Register
+    <string name="password">Heslo</string>
+    <string name="email">Email</string>
+    <string name="username">Jméno</string>
+    <string name="hide_password">Skrýt text</string>
+    <string name="show_password">Ukázat text</string>
     <!-- Onboarding -->
     <string name="choose_topics_that_interest_you">Vyberte si téma které vás zajímá</string>
     <string name="label_continue_to_courses">Pokračovat do kurzu</string>
