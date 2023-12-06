@@ -1,4 +1,5 @@
 # StudyCards
+## Jetpack Compose Android App
 - Android Jetpack Compose project based on my personal project Learning Cards. Done as a school project.
 - App Helps you to learn more efficiently by having quick access to all courses.
 
@@ -18,19 +19,19 @@
 
 # Screenshots
 
-*welcomeScreen*
+### welcomeScreen
 ![welcomeScreen](app/libs/img/welcomeScreen.png)
 
-*registerScreen*
+### registerScreen
 ![registerScreen](app/libs/img/registerScreen.png)
 
-*loginScreen*
+### loginScreen
 ![loginScreen](app/libs/img/loginScreen.png)
 
-*mainFeaturedCourses*
+### mainFeaturedCourses
 ![mainScreen](app/libs/img/mainScreen.png)
 
-*coursesScreen*
+### coursesScreen
 ![coursesScreen](app/libs/img/coursesScreen.png)
 
 ## Future Implementation
